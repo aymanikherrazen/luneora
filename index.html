@@ -6,24 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background-color: #f7f4ef;
+      margin: 0; padding: 0; height: 100%;
+      background: #ffffff;
       font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+    .stats-widget {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1100px;
+      background: #fff;
+      z-index: 9999;
+      padding: 10px 0;
+      box-sizing: border-box;
     }
     .stats-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 15px 5px;
-      height: 100%;
+      padding: 0 10px;
       box-sizing: border-box;
-      align-content: center; /* لترتيب العمود وسط */
     }
     .stat-box {
       flex: 1 1 calc(50% - 12px);
@@ -33,15 +39,15 @@
       border-radius: 14px;
       padding: 15px 12px;
       text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease;
       box-sizing: border-box;
       font-size: 0.9rem;
       min-height: 110px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
     }
     .stat-box.visible {
       opacity: 1;
@@ -85,50 +91,36 @@
   </style>
 </head>
 <body>
-  <div class="stats-container">
-    <div class="stat-box">
-      <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
-      <h2><span class="counter" data-target="82">0</span>+</h2>
-      <p>Clients satisfaits</p>
-    </div>
+  <div class="stats-widget">
+    <div class="stats-container">
+      <div class="stat-box">
+        <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+        <h2><span class="counter" data-target="82">0</span>+</h2>
+        <p>Clients satisfaits</p>
+      </div>
 
-    <div class="stat-box">
-      <svg class="stat-icon" viewBox="0 0 24 24"><path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14zm-5-13h-4v2h4v-2zm0 4h-4v2h4v-2zm0 4h-4v2h4v-2z"/></svg>
-      <h2><span class="counter" data-target="120">0</span>+</h2>
-      <p>Colis livrés</p>
-    </div>
+      <div class="stat-box">
+        <svg class="stat-icon" viewBox="0 0 24 24"><path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14zm-5-13h-4v2h4v-2zm0 4h-4v2h4v-2zm0 4h-4v2h4v-2z"/></svg>
+        <h2><span class="counter" data-target="120">0</span>+</h2>
+        <p>Colis livrés</p>
+      </div>
 
-    <div class="stat-box">
-      <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm0 18c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-      <h2><span class="counter" data-target="98">0</span>%</h2>
-      <p>Taux de satisfaction</p>
-    </div>
+      <div class="stat-box">
+        <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm0 18c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+        <h2><span class="counter" data-target="98">0</span>%</h2>
+        <p>Taux de satisfaction</p>
+      </div>
 
-    <div class="stat-box">
-      <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32c-4.6-4.18-7.55-6.95-7.55-10.53 0-2.54 2.01-4.6 4.5-4.6 1.54 0 2.91.8 3.75 2.01.84-1.21 2.21-2.01 3.75-2.01 2.49 0 4.5 2.06 4.5 4.6 0 3.58-2.95 6.35-7.55 10.53l-1.45 1.32z"/></svg>
-      <h2><span class="counter" data-target="100">0</span>%</h2>
-      <p>Produits naturels</p>
+      <div class="stat-box">
+        <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32c-4.6-4.18-7.55-6.95-7.55-10.53 0-2.54 2.01-4.6 4.5-4.6 1.54 0 2.91.8 3.75 2.01.84-1.21 2.21-2.01 3.75-2.01 2.49 0 4.5 2.06 4.5 4.6 0 3.58-2.95 6.35-7.55 10.53l-1.45 1.32z"/></svg>
+        <h2><span class="counter" data-target="100">0</span>%</h2>
+        <p>Produits naturels</p>
+      </div>
     </div>
   </div>
 
   <script>
-    // compteur animé
-    document.querySelectorAll('.counter').forEach(counter => {
-      let count = 0;
-      const target = +counter.dataset.target;
-      const step = Math.ceil(target / 50);
-      const update = () => {
-        count += step;
-        if (count >= target) counter.textContent = target;
-        else {
-          counter.textContent = count;
-          requestAnimationFrame(update);
-        }
-      };
-      update();
-    });
-
-    // animation عند الظهور
+    // Animation عند الظهور
     const boxes = document.querySelectorAll('.stat-box');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -139,6 +131,49 @@
     }, { threshold: 0.3 });
 
     boxes.forEach(box => observer.observe(box));
+
+    // عداد تدريجي مع توقف 3 ثواني ثم يكمل
+    function animateCounter(counter) {
+      let target = +counter.dataset.target;
+      let current = 0;
+      let increment = Math.ceil(target / 100);
+      let delay = 30;
+      let paused = false;
+
+      function update() {
+        if (paused) return;
+        current += increment;
+        if (current >= target) {
+          counter.textContent = target;
+        } else {
+          counter.textContent = current;
+          requestAnimationFrame(update);
+        }
+      }
+
+      // زيادة بطيئة حتى 3 ثواني تقريبًا (نحسبها)
+      let slowUpTo = Math.floor(target * 0.3); // 30% العدد
+      let slowCount = 0;
+
+      function slowStep() {
+        if (slowCount < slowUpTo) {
+          slowCount++;
+          counter.textContent = slowCount;
+          setTimeout(slowStep, 30);
+        } else {
+          paused = false;
+          update();
+        }
+      }
+
+      // البداية بزيادة بطيئة ثم تكمل بسرعة
+      paused = true;
+      slowStep();
+    }
+
+    document.querySelectorAll('.counter').forEach(counter => {
+      animateCounter(counter);
+    });
   </script>
 </body>
 </html>
