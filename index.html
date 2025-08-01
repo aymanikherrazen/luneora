@@ -1,100 +1,113 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Statistiques Lunéora</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      background-color: #f7f4ef;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<style>
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 10px;
+    background: #f7f4ef;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
-    .stat-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
-      padding: 50px 20px;
-    }
+  .stat-box {
+    flex: 1 1 calc(50% - 16px);
+    max-width: calc(50% - 16px);
+    background: #fff;
+    border: 2px solid #b59b7b;
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
 
+  .stat-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+    fill: #b59b7b;
+  }
+
+  .stat-box h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #b59b7b;
+  }
+
+  .stat-box p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  @media (min-width: 768px) {
     .stat-box {
-      border: 2px solid #b59b7b;
-      border-radius: 16px;
-      padding: 25px 30px;
-      background-color: #fff;
-      min-width: 200px;
-      flex: 1 1 45%;
-      text-align: center;
+      flex: 1 1 calc(25% - 16px);
+      max-width: calc(25% - 16px);
     }
+  }
+</style>
 
-    .stat-box h2 {
-      font-size: 2.8rem;
-      color: #b59b7b;
-      margin: 0;
-    }
-
-    .stat-box p {
-      font-size: 1.1rem;
-      color: #333;
-      margin-top: 10px;
-    }
-
-    @media (min-width: 768px) {
-      .stat-box {
-        flex: 1 1 22%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="stat-container">
-    <div class="stat-box">
-      <h2><span class="counter" data-target="82">0</span>+</h2>
-      <p>Clients satisfaits</p>
-    </div>
-
-    <div class="stat-box">
-      <h2><span class="counter" data-target="120">0</span>+</h2>
-      <p>Colis livrés</p>
-    </div>
-
-    <div class="stat-box">
-      <h2><span class="counter" data-target="98">0</span>%</h2>
-      <p>Taux de satisfaction</p>
-    </div>
-
-    <div class="stat-box">
-      <h2><span class="counter" data-target="100">0</span>%</h2>
-      <p>Produits naturels</p>
-    </div>
+<div class="stats-container">
+  <div class="stat-box">
+    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+    <h2><span class="counter" data-target="82">0</span>+</h2>
+    <p>Clients satisfaits</p>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const counters = document.querySelectorAll('.counter');
-      counters.forEach(counter => {
-        counter.innerText = '0';
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText;
-          const increment = Math.ceil(target / 80);
+  <div class="stat-box">
+    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M3 3v18h18v-18h-18zm16 16h-14v-14h14v14zm-5-13h-4v2h4v-2zm0 4h-4v2h4v-2zm0 4h-4v2h4v-2z"/></svg>
+    <h2><span class="counter" data-target="120">0</span>+</h2>
+    <p>Colis livrés</p>
+  </div>
 
-          if (count < target) {
-            counter.innerText = count + increment;
-            setTimeout(updateCount, 30);
-          } else {
-            counter.innerText = target;
-          }
-        };
-        updateCount();
-      });
+  <div class="stat-box">
+    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10-10-4.5-10-10 4.5-10 10-10zm0 18c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+    <h2><span class="counter" data-target="98">0</span>%</h2>
+    <p>Taux de satisfaction</p>
+  </div>
+
+  <div class="stat-box">
+    <svg class="stat-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32c-4.6-4.18-7.55-6.95-7.55-10.53 0-2.54 2.01-4.6 4.5-4.6 1.54 0 2.91.8 3.75 2.01.84-1.21 2.21-2.01 3.75-2.01 2.49 0 4.5 2.06 4.5 4.6 0 3.58-2.95 6.35-7.55 10.53l-1.45 1.32z"/></svg>
+    <h2><span class="counter" data-target="100">0</span>%</h2>
+    <p>Produits naturels</p>
+  </div>
+</div>
+
+<script>
+  // Compteur animé
+  document.querySelectorAll('.counter').forEach(counter => {
+    let count = 0;
+    const target = +counter.dataset.target;
+    const step = Math.ceil(target / 50);
+    const update = () => {
+      count += step;
+      if (count >= target) counter.textContent = target;
+      else {
+        counter.textContent = count;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+  });
+
+  // Animation lors الظهور
+  const boxes = document.querySelectorAll('.stat-box');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  </script>
+  }, { threshold: 0.3 });
 
-</body>
-</html>
+  boxes.forEach(box => observer.observe(box));
+</script>
