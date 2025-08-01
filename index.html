@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Statistiques Lunéora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background-color: #f7f4ef;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .stat-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    .stat-box {
+      border: 2px solid #b59b7b;
+      border-radius: 16px;
+      padding: 25px 30px;
+      background-color: #fff;
+      min-width: 200px;
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .stat-box h2 {
+      font-size: 2.8rem;
+      color: #b59b7b;
+      margin: 0;
+    }
+
+    .stat-box p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .stat-box {
+        flex: 1 1 22%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stat-container">
+    <div class="stat-box">
+      <h2><span class="counter" data-target="82">0</span>+</h2>
+      <p>Clients satisfaits</p>
+    </div>
+
+    <div class="stat-box">
+      <h2><span class="counter" data-target="120">0</span>+</h2>
+      <p>Colis livrés</p>
+    </div>
+
+    <div class="stat-box">
+      <h2><span class="counter" data-target="98">0</span>%</h2>
+      <p>Taux de satisfaction</p>
+    </div>
+
+    <div class="stat-box">
+      <h2><span class="counter" data-target="100">0</span>%</h2>
+      <p>Produits naturels</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        counter.innerText = '0';
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = Math.ceil(target / 80);
+
+          if (count < target) {
+            counter.innerText = count + increment;
+            setTimeout(updateCount, 30);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    });
+  </script>
+
+</body>
+</html>
